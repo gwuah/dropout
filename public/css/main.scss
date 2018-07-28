@@ -1,0 +1,128 @@
+@import "base.scss";
+@import "dashboard.scss";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Dropout", $defaultFont;
+}
+
+a {
+  text-decoration: none;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.text-center {
+  text-align: center;
+}
+.home {
+  background: $primary;
+  height: 100vh;
+  color: white;
+  flex-flow: column;
+}
+body {
+  main {
+    outline: 10px double white;
+    margin-top: 150px;
+    width: 400px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+
+    .name {
+      font-size: 60px;
+      font-weight: bold;
+      padding: 5px;
+    }
+    .about {
+      margin: 20px;
+      font-size: 20px;
+    }
+
+    .signup {
+      padding: 10px;
+
+      button {
+        box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+        border: 0;
+        padding: 10px 20px;
+        background: white;
+        font-weight: bold;
+        color: grey;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: 0.2s ease;
+
+        svg {
+          fill: grey;
+          position: relative;
+          top: -1px;
+          left: 4px;
+        }
+
+        &:hover {
+          color: black;
+
+          svg {
+            fill: black;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    z-index: -10;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    svg {
+      position: relative;
+      top: 10px;
+    }
+  }
+
+  .rotate {
+    // outline: 1px solid red;
+
+    margin: 50px;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    .rec {
+      padding: 0;
+      margin: 0;
+      position: relative;
+      top: -20px;
+      left: -10px;
+
+      svg {
+        animation: spin 15s linear infinite;
+
+        &:hover {
+          animation: xspin 15s linear infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes xspin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
