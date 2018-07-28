@@ -19,15 +19,30 @@ router.post('/recieve-gist', async (req, res) => {
 
   try {
     const ourUser = User.findOne({access_token: token});
-    ourUser.gists.push(gistUrl);
-    ourUser.save(function() {
+    !ourUser.gists ? [gistUrl] : ourUser.gists.push(gistUrl);
+
+    const newUser = User(ourUser);
+
+    newUser.save(function() {
       return res.json(req.body)
     })
+
   } catch (error) {
     console.log(error)
     res.send(error)
   }
 });
+
+router.get('/gistsPerUser/:token', async (req, res) => {
+  let access_token = req.params.token;
+  try {
+    const user = await User.findOne({access_token: access_token});
+    return res.json(user.gists)
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
 
 
 module.exports = router;

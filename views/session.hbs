@@ -188,7 +188,14 @@
         }
 
         async function init() {
+            let access_token = window.location.pathname.split('/')[3];
             const response = await fetch(`/message/get-messages/${ssid}`);
+            const gistins = await fetch(`/user/gistsPerUser/${access_token}`);
+            const ourGist = await gistins.json();
+            if (ourGist.length > 0) {
+                $(".gisted").attr('href', ourGist[0])
+                $(".gisted").text('click this link to view gist')
+            }
             const msgs = await response.json();
             messages = messages.concat(msgs);
 
