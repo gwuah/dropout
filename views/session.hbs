@@ -42,7 +42,7 @@
                         <form action="">
                             <input type="text" placeholder="Name">
                             <input type="text" placeholder="Description">
-                            <button> Send </button>
+                            <button> Save </button>
                         </form>
                         <div class="gist-link">
                             <a href="https://gist.github.com/Casprine/a92560853016f1bfaea729de3a8149a7">
@@ -85,8 +85,6 @@
                                 </span>
                             </li>
 
-
-
                             <li>
                                 <span class="name">
                                     Index :
@@ -100,7 +98,19 @@
                         </ul>
                     </div>
                 </div>
-                <div class="chat"> ChatRoom </div>
+                <div class="chat">
+                    <div class="chat-messages">
+                        <ul class="thread">
+                        </ul>
+                        <span class="user-name"> Caprie</span>
+                    </div>
+
+                    <div class="chat-footer">
+                        <input class="message-box" placeholder="enter your message here ..." value="" />
+                        <button id="send-btn">Send Message</button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

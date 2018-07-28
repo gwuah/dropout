@@ -81,8 +81,7 @@
             margin-top: auto;
             overflow: hidden; }
             .dashboard .board .divider .left .code .gist * {
-              margin: 2px 0;
-              outline: 1px solid red; }
+              margin: 2px 0; }
             .dashboard .board .divider .left .code .gist .heading {
               padding-left: 30px;
               font-weight: bold;
@@ -119,7 +118,8 @@
                 transition: 0.2s ease;
                 background: white;
                 color: #00818a;
-                font-style: italic; }
+                font-style: italic;
+                border-bottom: 1px dotted #00818a; }
                 .dashboard .board .divider .left .code .gist-link a:hover {
                   color: white;
                   background: #232931; }
@@ -153,12 +153,10 @@
               padding: 2px; }
               .dashboard .board .divider .right .resources-data ul li .link a {
                 color: #00818a;
+                border-bottom: 1px dotted #00818a;
                 font-style: italic; }
                 .dashboard .board .divider .right .resources-data ul li .link a:hover {
                   color: grey; }
-        .dashboard .board .divider .right .chat {
-          height: 70%;
-          width: 100%; }
 
 .add-resource {
   display: none;
@@ -222,6 +220,9 @@
         cursor: pointer; }
         .add-resource .card form button:hover {
           color: white; }
+
+.chat {
+  outline: 1px solid red; }
 
 .redirect {
   background: #232931;

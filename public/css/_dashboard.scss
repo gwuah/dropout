@@ -104,7 +104,6 @@
 
             * {
               margin: 2px 0;
-              outline: 1px solid red;
             }
 
             .heading {
@@ -154,6 +153,7 @@
                 background: white;
                 color: $accent;
                 font-style: italic;
+                border-bottom: 1px dotted $accent;
 
                 &:hover {
                   color: white;
@@ -202,6 +202,7 @@
                   padding: 2px;
                   a {
                     color: $accent;
+                    border-bottom: 1px dotted $accent;
                     font-style: italic;
 
                     &:hover {
@@ -212,11 +213,6 @@
               }
             }
           }
-        }
-        .chat {
-          height: 70%;
-          width: 100%;
-          //   border: 1px solid red;
         }
       }
     }
@@ -299,4 +295,11 @@
       }
     }
   }
+}
+
+// Chat session
+
+.chat {
+  outline: 1px solid red;
+  height: ;
 }
