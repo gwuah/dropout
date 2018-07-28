@@ -102,7 +102,7 @@
                     <div class="chat-messages">
                         <ul class="thread">
                         </ul>
-                        <span class="user-name"> Caprie</span>
+                        <span class="user-name"></span>
                     </div>
 
                     <div class="chat-footer">
@@ -123,7 +123,7 @@
             <form class="center">
                 <input type="text" placeholder="Name">
                 <input type="url" placeholder="Link">
-                <button> Add </button>
+                <button> Add </button>disc
             </form>
         </div>
 
@@ -171,10 +171,8 @@
             let li = document.createElement('li');
             li.setAttribute('class', 'message');
             let content = `<div class="message-box">
-            <div class="">
-             ${sender}
-            </div>
-            <div class="message">${text}</div>
+            <span class="sender"> {{!-- ${sender} --}} Sender : </span>
+            <span class="message">${text}</span>
           </div>`;
             li.innerHTML = content;
             return li
