@@ -9,6 +9,8 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var sessionRouter = require('./routes/session');
+
 var passport = require('passport');
 require('./passport')
 var GitHubStrategy = require('passport-github').Strategy;
@@ -51,6 +53,7 @@ app.use(function(req,res,next){
 })
 
 app.use('/', indexRouter);
+app.use('/', sessionRouter);
 app.use('/user', usersRouter);
 
 // catch 404 and forward to error handler

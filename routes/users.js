@@ -6,7 +6,7 @@ var router = express.Router();
 router.get('/', 
   function(req, res, next) {
     console.log("requsdder", req.user)
-    res.render('user', {title:'Dropout', profile:req.user});
+    res.render('index', {title:'Dropout', profile:req.user});
   });
 
 module.exports = router;
