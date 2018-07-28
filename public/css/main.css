@@ -81,7 +81,8 @@
             margin-top: auto;
             overflow: hidden; }
             .dashboard .board .divider .left .code .gist * {
-              margin: 2px 0; }
+              margin: 2px 0;
+              outline: 1px solid red; }
             .dashboard .board .divider .left .code .gist .heading {
               padding-left: 30px;
               font-weight: bold;
@@ -111,12 +112,13 @@
                 box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
                 border-radius: 3px; }
             .dashboard .board .divider .left .code .gist-link {
-              padding-left: 30px; }
+              padding-left: 30px;
+              margin-top: 20px; }
               .dashboard .board .divider .left .code .gist-link a {
                 padding: 2px;
                 transition: 0.2s ease;
                 background: white;
-                color: #fda403;
+                color: #00818a;
                 font-style: italic; }
                 .dashboard .board .divider .left .code .gist-link a:hover {
                   color: white;
@@ -150,7 +152,7 @@
             .dashboard .board .divider .right .resources-data ul li .link {
               padding: 2px; }
               .dashboard .board .divider .right .resources-data ul li .link a {
-                color: #fda403;
+                color: #00818a;
                 font-style: italic; }
                 .dashboard .board .divider .right .resources-data ul li .link a:hover {
                   color: grey; }
@@ -239,7 +241,7 @@
       margin: 10px; }
     .redirect .main a {
       color: white;
-      color: #fda403;
+      color: #00818a;
       font-style: italic;
       border-bottom: 1px dotted white; }
 
