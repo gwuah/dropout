@@ -192,23 +192,6 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
-"dropout@file:.":
-  version "0.0.0"
-  dependencies:
-    cookie-parser "~1.4.3"
-    debug "~2.6.9"
-    dropout "file:."
-    express "~4.16.0"
-    express-session "^1.15.6"
-    express-validator "^5.3.0"
-    hbs "~4.0.1"
-    http-errors "~1.6.2"
-    mongoose "^5.2.5"
-    mongoose-findorcreate "^3.0.0"
-    morgan "~1.9.0"
-    passport "^0.4.0"
-    passport-github "^1.1.0"
-
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -562,6 +545,10 @@ optimist@^0.6.1:
   dependencies:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
+
+"ot@git+https://github.com/Operational-Transformation/ot.js.git":
+  version "0.0.15"
+  resolved "git+https://github.com/Operational-Transformation/ot.js.git#8873b7e28e83f9adbf6c3a28ec639c9151a838ae"
 
 parseqs@0.0.5:
   version "0.0.5"

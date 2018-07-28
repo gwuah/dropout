@@ -5,15 +5,46 @@
 
 <head>
     <title>Dropout</title>
+    <link rel="stylesheet" href="/static/stylesheets/codemirror.css">
+    <link rel="stylesheet" href="/static/stylesheets/monokai.css">
 </head>
 
 <body>
-    <h1>This is a new session</h1>
+    <div id="code-editor">
+
+    </div> 
+    <script src="/static/js/ot.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.js"></script>
+    <script src="/static/js/javascript.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        c = io('http://localhost:3000');
+        const EditorClient = ot.EditorClient
+        const SocketIOAdapter = ot.SocketIOAdapter
+        const CodeMirrorAdapter = ot.CodeMirrorAdapter
+
+        const socket = io('http://localhost:3000');
+        const editor = CodeMirror(document.getElementById('code-editor'), {
+            lineNumbers: true,
+            theme: "monokai",
+            mode: 'javascript'
+        })
+        let client;
+        function init(str, revision, clients, serverAdapter) {
+            editor.setValue(str)
+            client = window.client = new EditorClient(
+                revision, clients, serverAdapter, new CodeMirrorAdapter(editor)
+            )
+        }
+        const sessionId = '5b5bc0838e8e542ff8b874cd'
+        socket.emit('joinSession', {session: sessionId})
+        socket.emit('mydoc', {session: 'kooltr'})
+        socket.on('doc', (obj) => {
+            console.log('heyyyy')
+            init(obj.str, obj.revision, obj.clients, new SocketIOAdapter(socket))
+        })
         
     </script>
+    
 </body>
 
 </html>

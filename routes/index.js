@@ -5,6 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // console.log("requser", req.user)
+  res.send('Kwaku mensah')
   // res.render('user', {title:'Dropout', profile:req.user});
 });
 

@@ -8,7 +8,6 @@
   "dependencies": {
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "dropout": "/home/griffith/Desktop/dropout",
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
@@ -17,6 +16,7 @@
     "mongoose": "^5.2.5",
     "mongoose-findorcreate": "^3.0.0",
     "morgan": "~1.9.0",
+    "ot": "git+https://github.com/Operational-Transformation/ot.js.git",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
     "socket.io": "^2.1.1"
