@@ -7,10 +7,68 @@
 
 <body>
     <h1>Watcher</h1>
+
+    <div id="chat">
+
+        <div class="message-box" v-for="(message, index) in messages">
+            <div class="">
+                <!-- <span>{{ sender }}</span> -->
+                {{ message.sender }}
+            </div>
+            <div class="message">{{ message.text }}</div>
+        </div>
+
+        <Message v-for="(message, key) in messages" :msg="message" :sender="message.sender" :key="key"></Message>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+
     <script>
         c = io('http://localhost:3000');
-        
+        const vm = new Vue({
+            el: "#chat",
+            data: {
+                name: 'dfdfdfd',
+                messages: [{
+                        sender: "Griffith",
+                        text: "Hello World"
+                    },
+                    {
+                        sender: "Griffith",
+                        text: "Hello World"
+                    },
+                    {
+                        sender: "Griffith",
+                        text: "Hello World"
+                    },
+                    {
+                        sender: "Griffith",
+                        text: "Hello World"
+                    }
+                ]
+            }
+        })
+
+        Vue.component('Message', {
+            props: ["msg", "sender"],
+            data: function () {
+                return {
+                    counter: 0
+                }
+            },
+            template: `<div class="message-box">
+            <div class="">
+              <span>{{ sender }}</span>
+              {{ msg.sender }}
+            </div>
+            <div class="message">{{ msg.text }}</div>
+          </div>
+          `,
+            beforeMount() {
+                console.log('dsd', this._msg)
+            }
+        })
     </script>
 </body>
 
