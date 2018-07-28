@@ -40,13 +40,12 @@
                             Save as Gist
                         </div>
                         <form action="">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Description">
-                            <button> Save </button>
-                        </form>
+                           <input class="filename" type="text" placeholder="Name">
+                            <input class="description" type="text" placeholder="Description">
+                            <button id="save-gist"> Send </button>
+                        <</form>
                         <div class="gist-link">
-                            <a href="https://gist.github.com/Casprine/a92560853016f1bfaea729de3a8149a7">
-                                https://gist.github.com/Casprine/a92560853016f1bfaea729de3a8149a7</a>
+                            <a class="gisted" href="https://gist.github.com/Casprine/a92560853016f1bfaea729de3a8149a7">Your gist will appear here</a>
                         </div>
                     </div>
                 </div>
@@ -137,6 +136,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
         </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
 
     <script src="/static/js/index.js"></script>
     <script>
@@ -146,6 +147,45 @@
         const userName = document.querySelector('.user-name');
         const ssid = window.location.href.split("session")[1].split("/")[1]
         let messages = [];
+
+        const saveGist = document.getElementById('save-gist');
+        saveGist.addEventListener('click', async(e) => {
+          e.preventDefault()
+           let filename = $('.filename').val();
+            let description = $('.description').val();
+            let _code = $('#code-editor').text();
+            let access_token = window.location.pathname.split('/')[3];
+
+            console.log('acess_token', access_token);
+            console.log(filename, description, _code, access_token)
+
+            const gisted = await createGist(filename, description, _code, access_token)
+            $(".gisted").attr('href', gisted)
+            $(".gisted").text('click this link to view gist')
+        })
+        
+
+        async function createGist(filename, description, content, access_token) {
+          const gist = {
+            "description": "",
+            "public": true,
+            "files": {}
+          }
+          gist['description'] = description;
+          gist['files'][filename] = { content: content}
+
+          try {
+            // create gist
+          const res = await axios.post(`https://api.github.com/gists?access_token=${access_token}`, gist);
+          // send back to server so we save
+          $(".gisted").attr('href', res.data.html_url);
+          const back = await axios.post(`/user/recieve-gist`, {gistUrl: res.data.html_url, access_token: access_token});
+          return back.gistUrl
+
+          } catch (error) {
+            console.log(error)
+          }
+        }
 
         async function init() {
             const response = await fetch(`/message/get-messages/${ssid}`);
@@ -258,61 +298,6 @@
     <script>
 
 
-    </script>
-
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-    <script type="text/babel">
-
-        const Message = ({message}) => {
-
-            return(
-                <div className="message">
-                    {message.sender}
-                </div>
-            )
-
-            
-        }
-        class ChatSection extends React.Component {
-            constructor() {
-                super()
-                this.state = {
-                    messages: []
-                }
-            }
-            
-            componentDidMount(){
-                this.setState({
-                    messages: [ {
-                        sender: 'claeusdev',
-                        message: 'Good app'
-                    },
-                    {
-                        sender: 'casprine',
-                        message: 'Good app'
-                    }
-                    ]
-                })
-                
-            }
-            render() {
-                const { messages } = this.state
-                
-                return (
-                    <div className="section">
-                        {messages.map(message => <Message key={message.sender} message={message}/>
-                        )}
-                    </div>
-                )
-            }
-        }
-
-        
-
-        ReactDOM.render(<ChatSection />, document.getElementById('chatSection'))
     </script>
 </body>
 

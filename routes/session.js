@@ -3,21 +3,21 @@ var passport = require("passport");
 var Session = require("../models/Session");
 var router = express.Router();
 
-router.get("/create-session", (req, res) => {
-  let session = new Session();
+router.get("/create-session/:token", (req, res) => {
+  let session = new Session({token: req.params.token });
 
   session.save(function(err, data) {
     if (err) {
       console.log(err);
       res.render("error");
     } else {
-      res.redirect("/session/" + data._id);
+      res.redirect(`/session/${data._id}/${data.token}`);
     }
   });
 });
 
-router.get("/session/:id", (req, res) => {
-  console.log(res.user);
+router.get("/session/:id/:token", (req, res) => {
+  console.log(req.params.token)
 
   if (req.params.id) {
     Session.findOne({ _id: req.params.id }, (err, data) => {

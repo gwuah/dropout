@@ -25,10 +25,10 @@
 
     <div class="main">
         <div class="name">{{title}}</div>
-        <p>Welcome to {{profile.username}} </p>
+        <p>Welcome {{profile.username}} </p>
 
         {{#if user}}
-        <a href="/create-session" class='btn btn-primary'>Create New Session</a>
+        <a href="/create-session/{{profile.access_token}}" class='btn btn-primary'>Create New Session</a>
         {{/if}}
 
     </div>
