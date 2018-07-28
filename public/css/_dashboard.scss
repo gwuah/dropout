@@ -301,5 +301,32 @@
 
 .chat {
   outline: 1px solid red;
-  height: ;
+  height: 65%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  &-messages {
+    outline: 1px solid red;
+  }
+  &-footer {
+    outline: 1px solid red;
+    width: 100%;
+    margin-top: auto;
+
+    input {
+      padding: 10px;
+      width: 70%;
+    }
+
+    button {
+      height: 100%;
+      padding: 10px;
+      border: 0;
+      background: $primary;
+      color: white;
+      border-radius: 3px;
+      box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+    }
+  }
 }

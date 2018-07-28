@@ -222,7 +222,28 @@
           color: white; }
 
 .chat {
-  outline: 1px solid red; }
+  outline: 1px solid red;
+  height: 65%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center; }
+  .chat-messages {
+    outline: 1px solid red; }
+  .chat-footer {
+    outline: 1px solid red;
+    width: 100%;
+    margin-top: auto; }
+    .chat-footer input {
+      padding: 10px;
+      width: 70%; }
+    .chat-footer button {
+      height: 100%;
+      padding: 10px;
+      border: 0;
+      background: #232931;
+      color: white;
+      border-radius: 3px;
+      box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1); }
 
 .redirect {
   background: #232931;
