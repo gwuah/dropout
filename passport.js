@@ -3,6 +3,7 @@ var GitHubStrategy = require('passport-github').Strategy;
 var User = require('./models/User')
 
 passport.use(new GitHubStrategy({
+  scope: "user,gist",
   clientID: 'b780f5677e907b31018f',
   clientSecret: '37f02161bb065363d8293065e7f9f565b1031319',
   callbackURL: "http://127.0.0.1:3000/auth/github/callback"

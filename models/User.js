@@ -9,7 +9,8 @@ var userSchema = new Schema({
   avatar: String,
   email: String,
   code: String,
-  access_token: String
+  access_token: String,
+  gists: [String]
 })
 
 userSchema.plugin(findOrCreate);

@@ -11,8 +11,13 @@
 
 <body>
     <div id="code-editor">
-
+      <div class="hde" style="display: none">{{ code }}</div>
     </div> 
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+      </script>
     <script src="/static/js/ot.js"></script>   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.js"></script>
     <script src="/static/js/javascript.js"></script>
@@ -28,14 +33,18 @@
             theme: "monokai",
             mode: 'javascript'
         })
+
+        let code = $('#code-editor').val();
         let client;
         function init(str, revision, clients, serverAdapter) {
+          if (!code) {
             editor.setValue(str)
+          }
             client = window.client = new EditorClient(
                 revision, clients, serverAdapter, new CodeMirrorAdapter(editor)
             )
         }
-        const sessionId = '5b5bc0838e8e542ff8b874cd'
+        const sessionId = window.location.href.split("session")[1].split("/")[1];
         socket.emit('joinSession', {session: sessionId})
         socket.emit('mydoc', {session: 'kooltr'})
         socket.on('doc', (obj) => {

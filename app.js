@@ -10,6 +10,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var sessionRouter = require('./routes/session');
+var messageRouter = require('./routes/message')
 
 var passport = require('passport');
 require('./passport')
@@ -56,6 +57,7 @@ app.use(function(req,res,next){
 
 app.use('/', indexRouter);
 app.use('/', sessionRouter);
+app.use('/', messageRouter)
 app.use('/user', usersRouter);
 
 // catch 404 and forward to error handler

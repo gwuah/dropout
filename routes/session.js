@@ -25,7 +25,12 @@ router.get('/session/:id', (req, res) => {
       }
 
       if (data) {
-        res.render('session', {data: data , sessionId: data._id})
+        Session.find({_id: req.params.id}, (err, data) => {
+          res.render('session', {
+            code: data.code , 
+            sessionId: data._id
+          })
+        })
       } else {
         res.render('error')
       }
