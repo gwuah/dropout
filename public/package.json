@@ -1,0 +1,22 @@
+{
+  "name": "dropout-ui",
+  "version": "1.0.0",
+  "description": "Online classroom",
+  "main": "src/js/index.js",
+  "scripts": {
+    "start": "gulp start",
+    "build": "gulp build"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "Kilm",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^4.0.1"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}

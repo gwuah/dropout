@@ -214,6 +214,27 @@
         .add-resource .card form button:hover {
           color: white; }
 
+.redirect {
+  background: #232931;
+  color: white; }
+  .redirect .main {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center; }
+    .redirect .main .name {
+      font-size: 60px;
+      font-weight: bold;
+      padding: 5px; }
+    .redirect .main p {
+      font-size: 20px;
+      margin: 10px; }
+    .redirect .main a {
+      outline: 1px solid red;
+      color: white;
+      font-style: italic; }
+
 * {
   margin: 0;
   padding: 0;
