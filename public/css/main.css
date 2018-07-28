@@ -141,6 +141,7 @@
           color: white;
           margin-bottom: 5px;
           background: #232931;
+          border: 1px solid #232931;
           position: relative;
           box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15); }
           .dashboard .board .divider .right .resources-data {
@@ -222,18 +223,18 @@
           color: white; }
 
 .chat {
-  outline: 1px solid #232931;
-  height: 65%;
+  border: 1px solid #232931;
+  height: 90%;
   display: flex;
   flex-flow: column;
-  justify-content: center; }
+  justify-content: center;
+  padding: 0; }
   .chat-messages ul li {
-    list-style-type: none;
-    margin: 5px 0px; }
+    list-style-type: none; }
     .chat-messages ul li .sender {
       font-weight: bold;
       color: #232931;
-      margin: 5px; }
+      margin: 0 5px; }
   .chat-footer {
     width: 100%;
     margin-top: auto;
