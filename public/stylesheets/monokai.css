@@ -3,6 +3,7 @@
 .cm-s-monokai.CodeMirror {
   background: #232931;
   outline: 1px solid red;
+  width: 100%;
   color: #f8f8f2;
   /* height: 100%; */
 }
