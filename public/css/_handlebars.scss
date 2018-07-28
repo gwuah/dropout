@@ -4,14 +4,14 @@
   background: $primary;
   color: white;
   .main {
-    height: 100vh;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    height: 80vh;
 
     .name {
-      font-size: 60px;
+      font-size: 70px;
       font-weight: bold;
       padding: 5px;
     }
@@ -22,10 +22,10 @@
     }
 
     a {
-      outline: 1px solid red;
       color: white;
+      color: $accent;
       font-style: italic;
-
+      border-bottom: 1px dotted white;
     }
   }
 }
