@@ -57,7 +57,7 @@ app.use(function(req,res,next){
 
 app.use('/', indexRouter);
 app.use('/', sessionRouter);
-app.use('/', messageRouter)
+app.use('/message', messageRouter)
 app.use('/user', usersRouter);
 
 // catch 404 and forward to error handler

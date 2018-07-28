@@ -26,6 +26,7 @@ router.get('/session/:id', (req, res) => {
 
       if (data) {
         Session.find({_id: req.params.id}, (err, data) => {
+          console.log(data)
           res.render('session', {
             code: data.code , 
             sessionId: data._id

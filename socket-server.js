@@ -46,13 +46,14 @@ module.exports = function(server) {
     // })
 
     socket.on('message', (data) => {
-      const msg = JSON.parse(data);
+      const msg = data;
       const newMessage = new Message({
         sender: msg.sender, 
         text: msg.text, 
         session_id: msg.session_id
       })
       newMessage.save(function(err, msg) {
+        console.log(msg)
         io.emit('message', msg)
       });
     })

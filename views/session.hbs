@@ -12,11 +12,95 @@
 <body>
     <div id="code-editor">
       <div class="hde" style="display: none">{{ code }}</div>
-    </div> 
+    </div>
+
+    <div class="chat-room">
+      <ul class="thread">
+      </ul>
+      <span style="display: none" class="user-name">{{username}}</span>
+
+      <input class='message-box' placeholder="enter your message here ..." value=""/>
+      <button id="send-btn">Send Message</button>
+    </div>
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous">
+      </script>
+
+      <script>
+        const thread = document.querySelector('.thread');
+        const send = document.querySelector('#send-btn');
+        const messageBox = document.querySelector('.message-box');
+        const userName = document.querySelector('.user-name');
+        const ssid = window.location.href.split("session")[1].split("/")[1]
+        let messages = [];
+
+        async function init() {
+          const response = await fetch(`/message/get-messages/${ssid}`);
+          const msgs = await response.json();
+          messages = messages.concat(msgs);
+
+          for (const element of messages) {
+            console.log('fdfd', element)
+            addNewMessageToThread(element)
+          }
+          return messages
+        }
+
+        (async function(){
+          c = await init()
+        })()
+
+        if (userName.value == "") {
+          value = Math.floor(Math.random() * 999).toString();
+          userName.value = `Dropout ${value}`
+        }
+
+        function createLi({sender, text}) {
+          let li = document.createElement('li');
+          li.setAttribute('class', 'message');
+          let content = `<div class="message-box">
+            <div class="">
+             ${sender}
+            </div>
+            <div class="message">${text}</div>
+          </div>`;
+          li.innerHTML = content;
+          return li
+        }
+
+        function addNewMessageToThread({sender, text}) {
+          const message = createLi({ sender, text });
+          thread.appendChild(message);
+        }
+
+        function sendMessage() {
+          // window.location.href.split("session")[1].split("/")[1]
+          if (messageBox.value == '') { return }
+          socket.emit('message', {
+            sender: $('.user-name').val(),
+            text: messageBox.value,
+            session_id: ssid
+          })
+
+          messageBox.value = "";
+        }
+
+        messageBox.addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            sendMessage()
+          }
+        });
+
+        send.addEventListener('click', function(e) {
+          sendMessage();
+
+        })
+
+
       </script>
     <script src="/static/js/ot.js"></script>   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.js"></script>
@@ -50,6 +134,12 @@
         socket.on('doc', (obj) => {
             console.log('heyyyy')
             init(obj.str, obj.revision, obj.clients, new SocketIOAdapter(socket))
+        })
+
+        socket.on('message', function(msg){
+          messages.push(msg);
+          console.log(msg)
+          addNewMessageToThread(msg)
         })
         
     </script>
