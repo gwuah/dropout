@@ -8,6 +8,6 @@ module.exports = {
             pass: 'anumshaikh2017'
         }
     },
-    dbConnstring: 'mongodb://127.0.0.1:27017/dropout',
+    dbConnstring: 'mongodb://gwuah:gwuah2018@ds253871.mlab.com:53871/dropout',
     sessionKey: 'HaloCode4Share'
 }
