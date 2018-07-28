@@ -10,6 +10,7 @@
 
     <div id="chat">
 
+<<<<<<< HEAD
         <div class="message-box" v-for="(message, index) in messages">
             <div class="">
                 <!-- <span>{{ sender }}</span> -->
@@ -19,6 +20,16 @@
         </div>
 
         <Message v-for="(message, key) in messages" :msg="message" :sender="message.sender" :key="key"></Message>
+=======
+          <div class="message-box" v-for="(message, index) in messages">
+            <div class="">
+              <!-- <span>{{ sender }}</span> -->
+              {{ message.sender }}
+            </div>
+            <div class="message">{{ message.text }}</div>
+          </div>
+          
+>>>>>>> 86db043296a0ff07ba201a6956e2283e3a65dc1f
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -27,6 +38,7 @@
     <script>
         c = io('http://localhost:3000');
         const vm = new Vue({
+<<<<<<< HEAD
             el: "#chat",
             data: {
                 name: 'dfdfdfd',
@@ -69,6 +81,30 @@
                 console.log('dsd', this._msg)
             }
         })
+=======
+          el: "#chat", 
+          data: {
+            name: 'dfdfdfd',
+            messages: [{
+              sender: "Griffith",
+              text: "Hello World"
+            },
+            {
+              sender: "Griffith",
+              text: "Hello World"
+            },
+            {
+              sender: "Griffith",
+              text: "Hello World"
+            },
+            {
+              sender: "Griffith",
+              text: "Hello World"
+            }]
+          }
+        })
+        
+>>>>>>> 86db043296a0ff07ba201a6956e2283e3a65dc1f
     </script>
 </body>
 
