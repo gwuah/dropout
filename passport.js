@@ -6,8 +6,8 @@ passport.use(
   new GitHubStrategy(
     {
       scope: "user,gist",
-      clientID: "YOUR_GITHUB_CLIENT_ID",
-      clientSecret: "YOUR_GITHUB_CLIENT_SECRET",
+      clientID: 'b780f5677e907b31018f',
+      clientSecret: '37f02161bb065363d8293065e7f9f565b1031319',
       callbackURL: "https://dropout-kilm.herokuapp.com/auth/github/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
